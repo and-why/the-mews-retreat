@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "cms"
+    "name": "cms",
+    "basePath": "/cms"
   },
   "api": {
     "projectId": "ykcqioqv",
@@ -16,9 +17,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
