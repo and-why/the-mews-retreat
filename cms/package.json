@@ -8,11 +8,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "next",
-    "build": "npm run build:sanity && pwd && npm run build:web",
-    "build:web": "next build",
-    "start:web": "next start",
-    "build:sanity": "cd cms && sanity build ../public/cms -y && cd ..",
-    "start:sanity": "cp .env ./cms/.env.development && cd studio && sanity start",
+    "build": "echo 'Building Sanity to public/studio' && cd studio && sanity build ../public/studio -y && cd .. && next build",
     "postinstall": "lerna bootstrap"
   },
   "keywords": [
