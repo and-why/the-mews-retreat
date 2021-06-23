@@ -8,7 +8,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "next",
-    "build": "echo 'Building Sanity to public/studio' && cd studio && sanity build ../public/studio -y && cd .. && next build",
+    "build": "echo 'Building Sanity to public/studio' && cd cms && sanity build ../public/cms -y && cd .. && next build",
     "postinstall": "lerna bootstrap"
   },
   "keywords": [
