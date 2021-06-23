@@ -7,9 +7,8 @@
   "author": "Andy Smith <andysmith2512@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "next",
-    "build": "echo 'Building Sanity to public/studio' && cd cms && sanity build ../public/cms -y && cd .. && next build",
-    "postinstall": "lerna bootstrap"
+    "start": "sanity start",
+    "build": "sanity build"
   },
   "keywords": [
     "sanity"
