@@ -7,8 +7,13 @@
   "author": "Andy Smith <andysmith2512@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "sanity start",
-    "build": "sanity build"
+    "dev": "next",
+    "build": "npm run build:sanity && pwd && npm run build:web",
+    "build:web": "next build",
+    "start:web": "next start",
+    "build:sanity": "cd studio && sanity build ../public/studio -y && cd ..",
+    "start:sanity": "cp .env ./studio/.env.development && cd studio && sanity start",
+    "postinstall": "lerna bootstrap"
   },
   "keywords": [
     "sanity"
