@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "echo 'Building Sanity to public/studio' &amp;&amp; cd studio &amp;&amp; sanity build ../public/studio -y &amp;&amp; cd .. &amp;&amp; next build",
+    "build": "echo 'Building Sanity to public/studio' && cd studio && npm run build && cd .. && next build",
     "start": "next start"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "react-scroll-parallax": "^2.4.0"
   },
   "devDependencies": {
-    "@sanity/cli": "^2.12.2"
+    "@sanity/cli": "^2.12.2",
+    "concurrently": "^5.3.0"
   }
 }
