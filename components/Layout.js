@@ -25,7 +25,7 @@ export default function Layout({ data, navData, children }) {
   return (
     <>
       <Header title={data.title} />
-      <Box>
+      <Box position='relative'>
         <Box h='100vh'>
           {data.image && (
             <Box h='100vh'>
