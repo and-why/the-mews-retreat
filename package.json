@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "echo 'Building Sanity to public/studio' && cd studio && npm run build && cd .. && next build",
-    "start": "next start"
+    "build": "npm run build:sanity && npm run build:web",
+    "build:web": "next build",
+    "build:sanity": "cd studio && npx sanity build ../public/studio -y && cd ..",
+    "postinstall": "lerna bootstrap"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.4",
