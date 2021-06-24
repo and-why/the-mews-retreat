@@ -5,7 +5,7 @@
     "basePath": "/studio"
   },
   "api": {
-    "projectId": "ykcqioqv",
+    "projectId": "process.env.NEXT_PUBLIC_PROJECT_ID",
     "dataset": "production"
   },
   "plugins": [

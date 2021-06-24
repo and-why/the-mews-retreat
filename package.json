@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@sanity/cli": "^2.12.2",
-    "concurrently": "^5.3.0"
+    "concurrently": "^5.3.0",
+    "lerna": "^4.0.0"
   }
 }
