@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "echo 'Building Sanity to public/studio' && cd studio && sanity build ../public/studio -y && cd .. && next build",
+    "build": "echo 'Building Sanity to public/studio' &amp;&amp; cd studio &amp;&amp; sanity build ../public/studio -y &amp;&amp; cd .. &amp;&amp; next build",
     "start": "next start"
   },
   "dependencies": {
