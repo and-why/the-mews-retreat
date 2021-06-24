@@ -1,8 +1,13 @@
 import { Parallax } from 'react-scroll-parallax';
 import { Image, Text, Grid, GridItem } from '@chakra-ui/react';
-import { urlFor } from '../../lib/sanity';
+import NextImage from 'next/image';
+import { urlForNextImage } from '../../lib/sanity';
 
 export default function LargetextWithImages({ item }) {
+  const imageProps1 = urlForNextImage(item?.image1);
+  const imageProps2 = urlForNextImage(item?.image2);
+  const { src1, blurDataURL1 } = imageProps1;
+  const { src2, blurDataURL2 } = imageProps2;
   return (
     <Grid
       key={item._key}
@@ -20,10 +25,9 @@ export default function LargetextWithImages({ item }) {
         position='relative'
       >
         <Parallax y={[-10, 20]} x={[10, -10]}>
-          <Image
-            src={urlFor(item.image1)}
+          <NextImage
+            {...imageProps1}
             layout='responsive'
-            width='390px'
             opacity='0.95'
             position='relative'
             zIndex='99'
@@ -37,12 +41,11 @@ export default function LargetextWithImages({ item }) {
         rowEnd={[-1, -1, 3]}
         position='relative'
       >
-        <Parallax y={[50, -10]} x={[-10, 10]}>
-          <Image
-            src={urlFor(item.image2)}
+        <Parallax y={[50, -50]} x={[-10, 10]}>
+          <NextImage
+            {...imageProps2}
             layout='responsive'
             opacity='0.95'
-            width='390px'
             position='relative'
             zIndex='1'
           />
@@ -51,7 +54,7 @@ export default function LargetextWithImages({ item }) {
       <GridItem colStart={[1]} colEnd={6} rowStart={2} rowEnd={2} position='relative'>
         <Text
           fontSize='6xl'
-          color={['white', 'white', '#333']}
+          color={['white', 'white', 'gray.600']}
           textShadow={['0px 0px 2px #000000c3', '0px 0px 2px #000000c3', '0px 0px 2px #ffffffc3']}
         >
           {item.text}

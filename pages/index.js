@@ -26,9 +26,7 @@ const homepageQuery = `*\[_type == "homepage"\][0] {
   "ctaUrl": cta {
     current
         },
-  image {
-    ...asset->
-  },
+  image,
   blurDataURL,
   items
 }`;

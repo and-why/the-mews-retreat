@@ -1,41 +1,28 @@
 import Image from 'next/image';
 
-import {
-  Drawer,
-  DrawerBody,
-  Flex,
-  Heading,
-  Button,
-  useDisclosure,
-  Box,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerHeader,
-  Text,
-  HamburgerIcon,
-} from '@chakra-ui/react';
+import { Flex, Heading, Box, Text } from '@chakra-ui/react';
 import Header from './Header';
-import { ArrowIcon } from '../components/Icons';
 import NavMenu from './NavMenu';
+import { urlForNextImage } from '../lib/sanity';
 
 export default function Layout({ data, navData, children }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  console.log(data);
+  console.log('data', data);
+  const imageProps = urlForNextImage(data?.image);
+  const { src, blurDataURL } = imageProps;
   return (
     <>
       <Header title={data.title} />
-      <Box position='relative'>
+      <Box position='relative' id='top'>
         <Box h='100vh'>
           {data.image && (
             <Box h='100vh'>
               <Image
-                src={data.image.url}
+                blurDataURL={blurDataURL}
+                src={src}
                 alt={data.title}
                 layout='fill'
                 objectFit='cover'
                 placeholder='blur'
-                blurDataURL={data.blurDataURL}
               />
             </Box>
           )}
@@ -47,23 +34,7 @@ export default function Layout({ data, navData, children }) {
             justify='space-between'
             direction='column'
           >
-            <Box textAlign='right'>
-              <Button colorScheme='black' onClick={onOpen} fontSize='2xl'>
-                MENU
-              </Button>
-              <Drawer isOpen={isOpen} placement='right' onClose={onClose}>
-                <DrawerOverlay backdropFilter='blur(2px)' />
-                <DrawerContent background='#42526E'>
-                  <DrawerCloseButton color='white' />
-                  <DrawerHeader color='white' fontSize='2xl'>
-                    MENU
-                  </DrawerHeader>
-                  <DrawerBody>
-                    <NavMenu navItems={navData.items} />
-                  </DrawerBody>
-                </DrawerContent>
-              </Drawer>
-            </Box>
+            <NavMenu navItems={navData.items} />
             <Flex
               width='100%'
               height='300px'
@@ -71,7 +42,20 @@ export default function Layout({ data, navData, children }) {
               background='rgb(2,0,36)'
               background='linear-gradient(0deg, rgba(32, 32, 32, 0.664) 0%, rgba(255,255,255,0) 100%)'
             >
-              <ArrowIcon h='100%' w='40px' color='white' ml={['0', '20px', '200px']} mr={4} />
+              <Flex
+                w='60px'
+                mr={8}
+                ml={['0', '20px', '20%']}
+                justify='flex-start'
+                align='flex-start'
+                height='100%'
+                paddingTop={16}
+                borderRight='1px solid white'
+              >
+                <Text fontSize='sm' width='100%' transform='rotate(-90deg)' color='white'>
+                  <a href='#content'>SCROLL</a>
+                </Text>
+              </Flex>
               <Box>
                 {data?.subtitle && (
                   <Text fontSize='3xl' color='white' lineHeight='1'>
@@ -84,7 +68,10 @@ export default function Layout({ data, navData, children }) {
               </Box>
             </Flex>
           </Flex>
-          <Box>{children}</Box>
+          <Box id='content'>{children}</Box>
+          <Flex w='100%' align='center' justify='center' p={8}>
+            <a href='#top'>back to top</a>
+          </Flex>
         </Box>
       </Box>
     </>

@@ -9,6 +9,12 @@ export default {
       type: 'string',
     },
     {
+      name: 'subtitle',
+      title: 'Page subtitle',
+      type: 'string',
+      description: "What's the subtitle of the hero image?",
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',

@@ -38,9 +38,7 @@ const navigationQuery = `*\[_type == "navigation"\][0] {
 const pageQuery = `*\[_type == "page" && slug.current == $slug\][0] {
   title,
   slug,
-  image {
-    ...asset->
-  },
+  image,
   blurDataURL,
   items
 }`;

@@ -9,7 +9,12 @@ export default function FullWidthImage({ item }) {
   const { src, blurDataURL } = imageProps;
 
   return (
-    <Flex w='100%' height='50vh' my={[8, 8, 16]} position='relative'>
+    <Flex
+      w='100%'
+      height={['50vh', null, null, '70vh', '90vh']}
+      my={[8, 8, 16]}
+      position='relative'
+    >
       <NextImage
         placeholder='blur'
         blurDataURL={blurDataURL}

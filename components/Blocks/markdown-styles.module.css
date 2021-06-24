@@ -25,6 +25,7 @@
 }
 
 .markdown h2 {
+  color: #1a202c;
   font-size: 48px;
   margin-top: 1em;
   padding-bottom: 0.75em;
@@ -35,7 +36,7 @@
   content: ' ';
   width: 50px;
   height: 2px;
-  background: black;
+  background: #1a202c;
   position: absolute;
   bottom: 0;
   left: 50%;
