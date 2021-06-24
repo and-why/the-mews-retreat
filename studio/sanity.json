@@ -2,7 +2,7 @@
   "root": true,
   "project": {
     "name": "The Mews Retreat CMS",
-    "basePath": "/cms"
+    "basePath": "/studio"
   },
   "api": {
     "projectId": "ykcqioqv",
