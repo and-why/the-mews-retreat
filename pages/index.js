@@ -9,17 +9,12 @@ const MotionBox = motion(Box);
 
 export default function Home({ data }) {
   const { homepageData, siteHeaderData, navigationData } = data;
-  console.log({ siteHeaderData, homepageData, navigationData });
+  // console.log({ siteHeaderData, homepageData, navigationData });
 
   return (
     <MotionBox exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
       <Layout data={homepageData} navData={navigationData}>
         {homepageData.items && <PageBody content={homepageData.items} />}
-        <Box>
-          <NextLink href='/amenities'>
-            <a>About</a>
-          </NextLink>
-        </Box>
       </Layout>
     </MotionBox>
   );
@@ -35,11 +30,7 @@ const siteHeaderQuery = `*\[_type == 'siteheader'\][0] {
 const homepageQuery = `*\[_type == "homepage"\][0] {
   title,
   subtitle,
-  "ctaUrl": cta {
-    current
-        },
   image,
-  blurDataURL,
   items
 }`;
 
@@ -54,7 +45,7 @@ export async function getStaticProps(context) {
   const siteHeaderData = await getClient().fetch(siteHeaderQuery);
   const navigationData = await getClient().fetch(mainNavigationQuery);
   const data = { homepageData, siteHeaderData, navigationData };
-  console.log(data);
+
   return {
     props: {
       data,

@@ -4,12 +4,14 @@ import { Flex, Heading, Box, Text } from '@chakra-ui/react';
 import Header from './Header';
 import NavMenu from './NavMenu';
 import { urlForNextImage } from '../lib/sanity';
-import { useEffect, useState } from 'react';
 
 import { motion } from 'framer-motion';
 
+let easing = [0.6, -0.15, 0.01, 0.99];
+const MotionBox = motion(Box);
+
 export default function Layout({ data, navData, children }) {
-  console.log('data', data);
+  // console.log('data', data);
 
   const imageProps = urlForNextImage(data?.image);
   const { src, blurDataURL } = imageProps;
@@ -33,45 +35,56 @@ export default function Layout({ data, navData, children }) {
           )}
           <Flex
             position='absolute'
+            overflow='hidden'
             top='0'
             height='100vh'
             width='100%'
             justify='space-between'
             direction='column'
+            background='rgba(0,0,0,.15)'
           >
             <NavMenu navItems={navData.items} />
-            <Flex
-              width='100%'
-              height='300px'
-              align='center'
-              background='rgb(2,0,36)'
-              background='linear-gradient(0deg, rgba(32, 32, 32, 0.664) 0%, rgba(255,255,255,0) 100%)'
+            <MotionBox
+              initial={{
+                x: 200,
+                opacity: 0,
+              }}
+              animate={{
+                x: 0,
+                opacity: 1,
+                transition: {
+                  duration: 2.6,
+                  ease: easing,
+                },
+              }}
             >
-              <Flex
-                w='60px'
-                mr={8}
-                ml={['0', '20px', '20%']}
-                justify='flex-start'
-                align='flex-start'
-                height='100%'
-                paddingTop={16}
-                borderRight='1px solid white'
-              >
-                <Text fontSize='sm' width='100%' transform='rotate(-90deg)' color='white'>
-                  <a href='#content'>SCROLL</a>
-                </Text>
-              </Flex>
-              <Box>
-                {data?.subtitle && (
-                  <Text fontSize='3xl' color='white' lineHeight='1'>
-                    {data.subtitle}
+              <Flex width='100%' height='300px' align='center'>
+                <Flex
+                  w='60px'
+                  mr={8}
+                  ml={['0', '20px', '20%']}
+                  justify='flex-start'
+                  align='flex-start'
+                  height='100%'
+                  paddingTop={16}
+                  borderRight='1px solid white'
+                >
+                  <Text fontSize='sm' width='100%' transform='rotate(-90deg)' color='white'>
+                    <a href='#content'>SCROLL</a>
                   </Text>
-                )}
-                <Heading fontSize='6xl' color='white' lineHeight='1'>
-                  {data.title}
-                </Heading>
-              </Box>
-            </Flex>
+                </Flex>
+                <Box>
+                  {data?.subtitle && (
+                    <Text fontSize='3xl' color='white' lineHeight='1'>
+                      {data.subtitle}
+                    </Text>
+                  )}
+                  <Heading fontSize='6xl' color='white' lineHeight='1'>
+                    {data.title}
+                  </Heading>
+                </Box>
+              </Flex>
+            </MotionBox>
             <Box
               background='white'
               height='100vh'

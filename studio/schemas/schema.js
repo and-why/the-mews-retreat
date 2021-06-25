@@ -18,6 +18,9 @@ import largeTextWithImages from './objects/largeTextWithImages';
 import sideContent from './objects/sideContent';
 import largeText from './objects/largeText';
 import fullWidthImage from './objects/fullWidthImage';
+import carouselSideImageLeft from './objects/carouselSideImageLeft';
+import carouselItem from './objects/carouselItem';
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -39,5 +42,7 @@ export default createSchema({
     sideContent,
     largeText,
     fullWidthImage,
+    carouselSideImageLeft,
+    carouselItem,
   ]),
 });

@@ -14,7 +14,7 @@ import { Box } from '@chakra-ui/react';
 const MotionBox = motion(Box);
 
 export default function Home({ data, preview }) {
-  console.log({ data, preview });
+  // console.log({ data, preview });
 
   const router = useRouter();
   if (!router.isFallback && !data.page?.slug) {
@@ -26,7 +26,7 @@ export default function Home({ data, preview }) {
     enabled: preview,
   });
 
-  console.log(navigationData);
+  // console.log(navigationData);
   return (
     <MotionBox exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
       <Layout data={data.page} navData={data.navigationData}>
@@ -46,7 +46,6 @@ const pageQuery = `*\[_type == "page" && slug.current == $slug\][0] {
   title,
   slug,
   image,
-  blurDataURL,
   items
 }`;
 

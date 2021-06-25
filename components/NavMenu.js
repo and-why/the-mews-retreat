@@ -14,7 +14,7 @@ import NavLink from './NavLink';
 import { getClient } from '../lib/sanity.server';
 
 export default function NavMenu({ navItems }) {
-  console.log(navItems);
+  // console.log(navItems);
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box textAlign='right'>
@@ -26,6 +26,7 @@ export default function NavMenu({ navItems }) {
         color='gray.600'
         onClick={onOpen}
         fontSize='xl'
+        zIndex='99999'
       >
         MENU
       </Button>

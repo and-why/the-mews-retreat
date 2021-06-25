@@ -31,12 +31,6 @@ export default {
       },
     },
     {
-      name: 'blurDataURL',
-      title: 'Create a tiny version of the image above for blur loading',
-      type: 'image',
-      validation: (Rule) => [Rule.required().error('Field cannot be empty')],
-    },
-    {
       name: 'items',
       type: 'array',
       title: 'Block Items',
@@ -47,6 +41,7 @@ export default {
         { type: 'largeTextWithImages' },
         { type: 'sideContent' },
         { type: 'largeText' },
+        { type: 'carouselSideImageLeft' },
       ],
     },
     // {

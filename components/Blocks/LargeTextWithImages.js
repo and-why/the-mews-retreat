@@ -2,6 +2,7 @@ import { Parallax } from 'react-scroll-parallax';
 import { Image, Text, Grid, GridItem } from '@chakra-ui/react';
 import NextImage from 'next/image';
 import { urlForNextImage } from '../../lib/sanity';
+import FadeUpWhenVisible from '../FadeUpWhenVisible';
 
 export default function LargetextWithImages({ item }) {
   const imageProps1 = urlForNextImage(item?.image1);
@@ -24,15 +25,17 @@ export default function LargetextWithImages({ item }) {
         rowEnd={[-1, -1, 2]}
         position='relative'
       >
-        <Parallax y={[-10, 20]} x={[10, -10]}>
-          <NextImage
-            {...imageProps1}
-            layout='responsive'
-            opacity='0.95'
-            position='relative'
-            zIndex='99'
-          />
-        </Parallax>
+        <FadeUpWhenVisible>
+          <Parallax y={[-10, 20]} x={[10, -10]}>
+            <NextImage
+              {...imageProps1}
+              layout='responsive'
+              opacity='0.95'
+              position='relative'
+              zIndex='99'
+            />
+          </Parallax>
+        </FadeUpWhenVisible>
       </GridItem>
       <GridItem
         colStart={[1, 1, 6]}
@@ -41,24 +44,28 @@ export default function LargetextWithImages({ item }) {
         rowEnd={[-1, -1, 3]}
         position='relative'
       >
-        <Parallax y={[50, -50]} x={[-10, 10]}>
-          <NextImage
-            {...imageProps2}
-            layout='responsive'
-            opacity='0.95'
-            position='relative'
-            zIndex='1'
-          />
-        </Parallax>
+        <FadeUpWhenVisible>
+          <Parallax y={[50, -50]} x={[-10, 10]}>
+            <NextImage
+              {...imageProps2}
+              layout='responsive'
+              opacity='0.95'
+              position='relative'
+              zIndex='1'
+            />
+          </Parallax>
+        </FadeUpWhenVisible>
       </GridItem>
       <GridItem colStart={[1]} colEnd={6} rowStart={2} rowEnd={2} position='relative'>
-        <Text
-          fontSize='6xl'
-          color={['white', 'white', 'gray.600']}
-          textShadow={['0px 0px 2px #000000c3', '0px 0px 2px #000000c3', '0px 0px 2px #ffffffc3']}
-        >
-          {item.text}
-        </Text>
+        <FadeUpWhenVisible>
+          <Text
+            fontSize='6xl'
+            color={['white', 'white', 'gray.600']}
+            textShadow={['0px 0px 2px #000000c3', '0px 0px 2px #000000c3', '0px 0px 2px #ffffffc3']}
+          >
+            {item.text}
+          </Text>
+        </FadeUpWhenVisible>
       </GridItem>
     </Grid>
   );
