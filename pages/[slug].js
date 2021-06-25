@@ -8,6 +8,11 @@ import { usePreviewSubscription } from '../lib/sanity';
 
 import { getClient } from '../lib/sanity.server';
 
+import { motion } from 'framer-motion';
+import { Box } from '@chakra-ui/react';
+
+const MotionBox = motion(Box);
+
 export default function Home({ data, preview }) {
   console.log({ data, preview });
 
@@ -23,9 +28,11 @@ export default function Home({ data, preview }) {
 
   console.log(navigationData);
   return (
-    <Layout data={data.page} navData={data.navigationData}>
-      <PageBody content={data.page.items} />
-    </Layout>
+    <MotionBox exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+      <Layout data={data.page} navData={data.navigationData}>
+        <PageBody content={data.page.items} />
+      </Layout>
+    </MotionBox>
   );
 }
 

@@ -1,5 +1,7 @@
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import { AnimatePresence } from 'framer-motion';
+
 import Head from 'next/head';
 import theme from '../styles/theme';
 import { css, Global } from '@emotion/react';
@@ -30,12 +32,14 @@ const GlobalStyle = ({ children }) => {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider theme={theme}>
-      <ParallaxProvider>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </ParallaxProvider>
-    </ChakraProvider>
+    <AnimatePresence exitBeforeEnter>
+      <ChakraProvider theme={theme}>
+        <ParallaxProvider>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </ParallaxProvider>
+      </ChakraProvider>
+    </AnimatePresence>
   );
 }
 

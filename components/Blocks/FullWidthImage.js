@@ -17,6 +17,7 @@ export default function FullWidthImage({ item }) {
     >
       <NextImage
         placeholder='blur'
+        quality='100'
         blurDataURL={blurDataURL}
         src={src}
         layout='fill'

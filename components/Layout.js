@@ -4,9 +4,13 @@ import { Flex, Heading, Box, Text } from '@chakra-ui/react';
 import Header from './Header';
 import NavMenu from './NavMenu';
 import { urlForNextImage } from '../lib/sanity';
+import { useEffect, useState } from 'react';
+
+import { motion } from 'framer-motion';
 
 export default function Layout({ data, navData, children }) {
   console.log('data', data);
+
   const imageProps = urlForNextImage(data?.image);
   const { src, blurDataURL } = imageProps;
   return (
@@ -19,6 +23,7 @@ export default function Layout({ data, navData, children }) {
               <Image
                 blurDataURL={blurDataURL}
                 src={src}
+                quality='100'
                 alt={data.title}
                 layout='fill'
                 objectFit='cover'
@@ -67,6 +72,14 @@ export default function Layout({ data, navData, children }) {
                 </Heading>
               </Box>
             </Flex>
+            <Box
+              background='white'
+              height='100vh'
+              width='100%'
+              position='absolute'
+              right={src ? '100%' : '0%'}
+              // opacity={src ? '0' : '1'}
+            ></Box>
           </Flex>
           <Box id='content'>{children}</Box>
           <Flex w='100%' align='center' justify='center' p={8}>

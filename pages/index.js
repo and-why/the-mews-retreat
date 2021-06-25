@@ -1,15 +1,27 @@
 import Layout from '../components/Layout';
 import PageBody from '../components/PageBody';
 import { getClient } from '../lib/sanity.server';
+import { motion } from 'framer-motion';
+import { Box } from '@chakra-ui/react';
+import NextLink from 'next/link';
+
+const MotionBox = motion(Box);
 
 export default function Home({ data }) {
   const { homepageData, siteHeaderData, navigationData } = data;
   console.log({ siteHeaderData, homepageData, navigationData });
 
   return (
-    <Layout data={homepageData} navData={navigationData}>
-      {homepageData.items && <PageBody content={homepageData.items} />}
-    </Layout>
+    <MotionBox exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+      <Layout data={homepageData} navData={navigationData}>
+        {homepageData.items && <PageBody content={homepageData.items} />}
+        <Box>
+          <NextLink href='/amenities'>
+            <a>About</a>
+          </NextLink>
+        </Box>
+      </Layout>
+    </MotionBox>
   );
 }
 
