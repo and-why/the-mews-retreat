@@ -18,7 +18,7 @@ export default function CarouselSideImageLeft({ item }) {
   }, []);
   return (
     <>
-      <Flex w='100%' direction='column' align='center'>
+      <Flex w='100%' direction='column' align='center' mb={16}>
         <Heading p={4} mb={4}>
           {item.title}
         </Heading>

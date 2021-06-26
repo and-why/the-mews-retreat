@@ -33,7 +33,11 @@ export default function CarouselItem({ item, index, setCurrent, current, totalIt
         align='flex-start'
         justify='flex-start'
       >
-        <Box w={['100vw', '100vw', '50vw', '50vw']}>
+        <Box
+          w={['100vw', '100vw', '50vw', '50vw']}
+          h={['100vw', '100vw', '50vw', '50vw']}
+          overflow='hidden'
+        >
           <FadeUpWhenVisible>
             <NextImage placeholder='blur' quality='100' {...imageProps} layout='responsive' />
           </FadeUpWhenVisible>
@@ -57,7 +61,7 @@ export default function CarouselItem({ item, index, setCurrent, current, totalIt
             >
               0{index + 1}
             </Text>
-            <Box minH='200px'>
+            <Box minH='250px'>
               <Heading color='gray.500' fontSize='xs' pb={4} textTransform='uppercase'>
                 {item.subheading}
               </Heading>
@@ -66,7 +70,7 @@ export default function CarouselItem({ item, index, setCurrent, current, totalIt
               </Heading>
               <Text fontSize='md'>{item.description}</Text>
             </Box>
-            <Flex>
+            <Flex display={totalItems == 1 && 'none'}>
               <IconButton
                 mr={2}
                 colorScheme='blackAlpha'
