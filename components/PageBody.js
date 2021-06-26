@@ -17,7 +17,7 @@ export default function PageBody({ content }) {
           return <TextBlock key={item._key} item={item} />;
         } else if (item._type == 'standardImageBlock') {
           const imageProps = urlForNextImage(item?.image);
-          console.log(imageProps);
+          // console.log(imageProps);
           return (
             <FadeUpWhenVisible key={item._key}>
               <Flex align='center' justify='center' height='130px'>

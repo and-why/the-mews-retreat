@@ -1,4 +1,4 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 import NextImage from 'next/image';
 import { useEffect, useState } from 'react';
 import { urlForNextImage } from '../../lib/sanity';
@@ -8,7 +8,7 @@ export default function CarouselSideImageLeft({ item }) {
   console.log('Carousel', item);
   const totalItems = item.items.length;
   const [current, setCurrent] = useState(1);
-
+  const direction = item.direction;
   useEffect(() => {
     if (current > totalItems) {
       setCurrent(current);
@@ -17,21 +17,27 @@ export default function CarouselSideImageLeft({ item }) {
     }
   }, []);
   return (
-    <Box overflow='hidden' w='100vw' h={['200vw', '200vw', '49vw', '49vw']} position='relative'>
-      <Flex h='100%'>
-        {item.items.map((item, index) => {
-          console.log(current, index + 1);
-          return (
-            <CarouselItem
-              index={index}
-              current={current}
-              setCurrent={setCurrent}
-              item={item}
-              totalItems={totalItems}
-            />
-          );
-        })}
+    <>
+      <Flex w='100%' direction='column' align='center'>
+        <Heading p={4} mb={4}>
+          {item.title}
+        </Heading>
+        <Flex h={['150vw', '150vw', '50vw', '50vw']} w='100%' position='relative'>
+          {item.items.map((item, index) => {
+            // console.log(current, index + 1);
+            return (
+              <CarouselItem
+                direction={direction}
+                index={index}
+                current={current}
+                setCurrent={setCurrent}
+                item={item}
+                totalItems={totalItems}
+              />
+            );
+          })}
+        </Flex>
       </Flex>
-    </Box>
+    </>
   );
 }

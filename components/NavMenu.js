@@ -26,7 +26,7 @@ export default function NavMenu({ navItems }) {
         color='gray.600'
         onClick={onOpen}
         fontSize='xl'
-        zIndex='99999'
+        zIndex='1'
       >
         MENU
       </Button>

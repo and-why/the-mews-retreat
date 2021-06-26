@@ -17,6 +17,17 @@ export default {
       title: 'Carousel Id',
     },
     {
+      name: 'direction',
+      type: 'string',
+      title: 'Image on which side?',
+      options: {
+        list: [
+          { title: 'Image Left', value: 'left' },
+          { title: 'Image Right', value: 'right' },
+        ],
+      },
+    },
+    {
       name: 'items',
       type: 'array',
       title: 'Carousel items',
