@@ -70,10 +70,14 @@ export default function CarouselItem({ item, index, setCurrent, current, totalIt
               </Heading>
               <Text fontSize='md'>{item.description}</Text>
             </Box>
-            <Flex display={totalItems == 1 && 'none'}>
+            <Flex
+              display={totalItems == 1 && 'none'}
+              position={['absolute', 'absolute', 'relative']}
+              top={['8', '8', '0']}
+            >
               <IconButton
                 mr={2}
-                colorScheme='blackAlpha'
+                colorScheme='gray'
                 borderRadius='50%'
                 h='50px'
                 w='50px'
@@ -84,7 +88,7 @@ export default function CarouselItem({ item, index, setCurrent, current, totalIt
                 icon={<BsArrowLeft />}
               />
               <IconButton
-                colorScheme='blackAlpha'
+                colorScheme='gray'
                 borderRadius='50%'
                 h='50px'
                 w='50px'

@@ -22,7 +22,7 @@ export default function CarouselSideImageLeft({ item }) {
         <Heading p={4} mb={4}>
           {item.title}
         </Heading>
-        <Flex h={['175vw', '175vw', '50vw', '50vw']} w='100%' position='relative'>
+        <Flex h={['150vw', '150vw', '50vw', '50vw']} w='100%' position='relative'>
           {item.items.map((item, index) => {
             // console.log(current, index + 1);
             return (
