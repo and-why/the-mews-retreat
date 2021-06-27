@@ -4,7 +4,7 @@ import { FaInstagram } from 'react-icons/fa';
 import Image from 'next/image';
 
 export default function Footer({ navItems, weather }) {
-  console.log(navItems);
+  // console.log(navItems);
   const icon = `http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
   return (
     <>
@@ -28,7 +28,13 @@ export default function Footer({ navItems, weather }) {
               </Heading>
               <Box>
                 <Link href='https://www.instagram.com/themewsstleonards/'>
-                  <Icon as={FaInstagram} w='50px' h='50px' />
+                  <Icon
+                    as={FaInstagram}
+                    w='50px'
+                    h='50px'
+                    transition='all 1s ease'
+                    _hover={{ opacity: 0.7, transition: 'all 1s ease' }}
+                  />
                 </Link>
               </Box>
             </Flex>

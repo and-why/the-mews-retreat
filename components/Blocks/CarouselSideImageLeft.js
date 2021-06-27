@@ -5,16 +5,17 @@ import { urlForNextImage } from '../../lib/sanity';
 import CarouselItem from './CarouselItem';
 
 export default function CarouselSideImageLeft({ item }) {
-  console.log('Carousel', item);
+  // console.log('Carousel', item);
   const totalItems = item.items.length;
   const [current, setCurrent] = useState(1);
   const direction = item.direction;
   useEffect(() => {
-    if (current > totalItems) {
-      setCurrent(current);
-    } else if (current <= totalItems) {
-      setCurrent(1);
-    }
+    // if (current > totalItems) {
+    //   setCurrent(current);
+    // } else if (current <= totalItems) {
+    //   setCurrent(1);
+    // }
+    setCurrent(current);
   }, []);
   return (
     <>

@@ -10,11 +10,12 @@ import { motion } from 'framer-motion';
 const MotionBox = motion(Box);
 
 export default function CarouselItem({ item, index, setCurrent, current, totalItems, direction }) {
-  console.log('Carousel Item', item);
+  // console.log('Carousel Item', item);
   const [number, setNumber] = useState(current);
 
   const imageProps = urlForNextImage(item.image);
   const { src, blurDataURL } = imageProps;
+  // console.log(current, totalItems);
   return (
     <MotionBox
       minW='98vw'
@@ -37,9 +38,17 @@ export default function CarouselItem({ item, index, setCurrent, current, totalIt
           w={['100vw', '100vw', '50vw', '50vw']}
           h={['100vw', '100vw', '50vw', '50vw']}
           overflow='hidden'
+          position='relative'
         >
           <FadeUpWhenVisible>
-            <NextImage placeholder='blur' quality='100' {...imageProps} layout='responsive' />
+            <NextImage
+              placeholder='blur'
+              quality='100'
+              src={src}
+              blurDataURL={blurDataURL}
+              layout='fill'
+              objectFit='cover'
+            />
           </FadeUpWhenVisible>
         </Box>
 
@@ -82,9 +91,7 @@ export default function CarouselItem({ item, index, setCurrent, current, totalIt
                 h='50px'
                 w='50px'
                 fontSize='30px'
-                onClick={() =>
-                  setCurrent(current >= totalItems ? current - 1 : (current = totalItems))
-                }
+                onClick={() => setCurrent(current > 1 ? current - 1 : (current = totalItems))}
                 icon={<BsArrowLeft />}
               />
               <IconButton

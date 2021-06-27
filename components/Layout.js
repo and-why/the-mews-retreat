@@ -12,7 +12,7 @@ let easing = [0.6, -0.15, 0.01, 0.99];
 const MotionBox = motion(Box);
 
 export default function Layout({ data, children }) {
-  console.log('data', data);
+  // console.log('data', data);
   const imageProps = urlForNextImage(data?.page.image);
   const { src, blurDataURL } = imageProps;
   return (

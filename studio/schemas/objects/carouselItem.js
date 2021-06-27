@@ -25,6 +25,7 @@ export default {
       name: 'image',
       type: 'image',
       title: 'Image for carousel Item',
+      options: { hotspot: true },
     },
   ],
 };
