@@ -29,7 +29,7 @@ export default function Home({ data, preview }) {
   // console.log(navigationData);
   return (
     <MotionBox exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
-      <Layout data={data.page} navData={data.navigationData}>
+      <Layout data={data}>
         <PageBody content={data.page.items} />
       </Layout>
     </MotionBox>
@@ -56,7 +56,9 @@ export async function getStaticProps({ params, preview = false }) {
     slug: params.slug,
   });
   const navigationData = await getClient(preview).fetch(navigationQuery);
-  const data = { page, navigationData };
+  const res = await fetch(getWeather());
+  const weather = await res.json();
+  const data = { page, navigationData, weather };
   return {
     props: {
       preview,

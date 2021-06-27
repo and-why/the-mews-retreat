@@ -45,7 +45,7 @@ export default function LargetextWithImages({ item }) {
         position='relative'
       >
         <FadeUpWhenVisible>
-          <Parallax y={[50, -50]} x={[-10, 10]}>
+          <Parallax y={[50, -50]} x={[-20, 0]}>
             <NextImage
               {...imageProps2}
               layout='responsive'

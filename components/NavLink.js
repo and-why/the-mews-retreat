@@ -7,7 +7,7 @@ export default function NavLink({ item }) {
   const currentLink = router.asPath;
 
   return (
-    <ListItem fontSize='2xl' color='gray.700'>
+    <ListItem color='gray.700'>
       <NextLink
         href={
           item.navigationItemUrl.internalLink
@@ -25,6 +25,7 @@ export default function NavLink({ item }) {
               : 'none'
           }
           isExternal={item.navigationItemUrl.externalUrl}
+          marginRight='10px'
         >
           {item.text}
         </Link>

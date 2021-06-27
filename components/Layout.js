@@ -3,29 +3,30 @@ import Image from 'next/image';
 import { Flex, Heading, Box, Text } from '@chakra-ui/react';
 import Header from './Header';
 import NavMenu from './NavMenu';
+import Footer from './Footer';
 import { urlForNextImage } from '../lib/sanity';
-
 import { motion } from 'framer-motion';
+import FadeUpWhenVisible from './FadeUpWhenVisible';
 
 let easing = [0.6, -0.15, 0.01, 0.99];
 const MotionBox = motion(Box);
 
-export default function Layout({ data, navData, children }) {
-  // console.log('data', data);xw
-  const imageProps = urlForNextImage(data?.image);
+export default function Layout({ data, children }) {
+  console.log('data', data);
+  const imageProps = urlForNextImage(data?.page.image);
   const { src, blurDataURL } = imageProps;
   return (
     <>
-      <Header title={data.title} />
+      <Header title={data.page.title} />
       <Box position='relative' id='top'>
         <Box h='100vh'>
-          {data.image && (
+          {data.page.image && (
             <Box h='100vh'>
               <Image
                 blurDataURL={blurDataURL}
                 src={src}
                 quality='100'
-                alt={data.title}
+                alt={data.page.title}
                 layout='fill'
                 objectFit='cover'
                 placeholder='blur'
@@ -42,7 +43,7 @@ export default function Layout({ data, navData, children }) {
             direction='column'
             background='rgba(0,0,0,.15)'
           >
-            <NavMenu navItems={navData.items} />
+            <NavMenu navItems={data.navData.items} />
             <MotionBox
               initial={{
                 x: 200,
@@ -73,13 +74,13 @@ export default function Layout({ data, navData, children }) {
                   </Text>
                 </Flex>
                 <Box>
-                  {data?.subtitle && (
+                  {data?.page.subtitle && (
                     <Text fontSize='3xl' color='white' lineHeight='1'>
-                      {data.subtitle}
+                      {data.page.subtitle}
                     </Text>
                   )}
                   <Heading fontSize='6xl' color='white' lineHeight='1'>
-                    {data.title}
+                    {data.page.title}
                   </Heading>
                 </Box>
               </Flex>
@@ -97,6 +98,11 @@ export default function Layout({ data, navData, children }) {
           <Flex w='100%' align='center' justify='center' p={8}>
             <a href='#top'>back to top</a>
           </Flex>
+          <Box>
+            <FadeUpWhenVisible>
+              <Footer navItems={data.navData.items} weather={data.weather} />
+            </FadeUpWhenVisible>
+          </Box>
         </Box>
       </Box>
     </>

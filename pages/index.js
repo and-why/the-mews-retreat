@@ -4,28 +4,18 @@ import { getClient } from '../lib/sanity.server';
 import { motion } from 'framer-motion';
 import { Box } from '@chakra-ui/react';
 import NextLink from 'next/link';
+import { getWeather, weatherApiCall } from '../lib/weather';
 
 const MotionBox = motion(Box);
 
 export default function Home({ data }) {
-  const { homepageData, siteHeaderData, navigationData } = data;
-  // console.log({ siteHeaderData, homepageData, navigationData });
-
+  console.log('homepage data', data);
   return (
     <MotionBox exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
-      <Layout data={homepageData} navData={navigationData}>
-        {homepageData.items && <PageBody content={homepageData.items} />}
-      </Layout>
+      <Layout data={data}>{data.page.items && <PageBody content={data.page.items} />}</Layout>
     </MotionBox>
   );
 }
-
-const siteHeaderQuery = `*\[_type == 'siteheader'\][0] {
-  title,
-  repoURL {
-    current
-  }
-}`;
 
 const homepageQuery = `*\[_type == "homepage"\][0] {
   title,
@@ -41,10 +31,13 @@ const mainNavigationQuery = `*\[_type == "navigation"\][0] {
 }`;
 
 export async function getStaticProps(context) {
-  const homepageData = await getClient().fetch(homepageQuery);
-  const siteHeaderData = await getClient().fetch(siteHeaderQuery);
-  const navigationData = await getClient().fetch(mainNavigationQuery);
-  const data = { homepageData, siteHeaderData, navigationData };
+  const page = await getClient().fetch(homepageQuery);
+  const navData = await getClient().fetch(mainNavigationQuery);
+
+  const res = await fetch(getWeather());
+  const weather = await res.json();
+
+  const data = { page, navData, weather };
 
   return {
     props: {
