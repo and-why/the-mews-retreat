@@ -19,9 +19,9 @@ export default function Layout({ data, children }) {
     <>
       <Header title={data.page.title} />
       <Box position='relative' id='top'>
-        <Box h='100vh'>
+        <Box h={['80vh', '80vh', '100vh']}>
           {data.page.image && (
-            <Box h='100vh'>
+            <Box h={['80vh', '80vh', '100vh']}>
               <Image
                 blurDataURL={blurDataURL}
                 src={src}
@@ -37,7 +37,7 @@ export default function Layout({ data, children }) {
             position='absolute'
             overflow='hidden'
             top='0'
-            height='100vh'
+            height={['80vh', '80vh', '100vh']}
             width='100%'
             justify='space-between'
             direction='column'
