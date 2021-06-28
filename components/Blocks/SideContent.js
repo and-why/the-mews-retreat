@@ -1,11 +1,13 @@
 import { Flex, Image, Heading, Box } from '@chakra-ui/react';
-import { urlFor } from '../../lib/sanity';
+import { urlForNextImage } from '../../lib/sanity';
 import BlockContent from '@sanity/block-content-to-react';
 import markdownStyles from './markdown-styles.module.css';
 import { Parallax } from 'react-scroll-parallax';
+import NextImage from 'next/image';
 import FadeUpWhenVisible from '../FadeUpWhenVisible';
 
 export default function SideContent({ item }) {
+  const imageProps = urlForNextImage(item.image);
   return (
     <Flex
       direction={['column', 'column', 'row']}
@@ -26,7 +28,9 @@ export default function SideContent({ item }) {
         <FadeUpWhenVisible>
           <Parallax y={[-10, 10]}>
             <Flex direction='column' align={['flex-start', 'flex-start', 'flex-end']}>
-              <Image src={urlFor(item.image)} width='100px' mb={2} />
+              <Box w='100px'>
+                <NextImage {...imageProps} layout='responsive' mb={2} />
+              </Box>
               <Heading
                 as='h3'
                 fontSize='md'

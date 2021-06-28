@@ -1,7 +1,5 @@
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import NextImage from 'next/image';
 import { useEffect, useState } from 'react';
-import { urlForNextImage } from '../../lib/sanity';
 import CarouselItem from './CarouselItem';
 
 export default function CarouselSideImage({ item }) {

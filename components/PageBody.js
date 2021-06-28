@@ -22,7 +22,7 @@ export default function PageBody({ content }) {
             <FadeUpWhenVisible key={item._key}>
               <Flex align='center' justify='center' height='130px'>
                 <Box h='130px' w={imageProps.width}>
-                  <NextImage my={8} {...imageProps} priority={['false', 'false', 'true']} />
+                  <NextImage my={8} {...imageProps} />
                 </Box>
               </Flex>
             </FadeUpWhenVisible>
