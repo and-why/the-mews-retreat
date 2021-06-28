@@ -1,7 +1,7 @@
 import { BiCarousel } from 'react-icons/bi';
 
 export default {
-  name: 'carouselSideImageLeft',
+  name: 'carouselSideImage',
   title: 'Carousel with image on left',
   type: 'object',
   icon: BiCarousel,

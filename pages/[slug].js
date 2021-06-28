@@ -57,9 +57,8 @@ export async function getStaticProps({ params, preview = false }) {
     slug: params.slug,
   });
   const navData = await getClient(preview).fetch(navigationQuery);
-  const res = await fetch(getWeather());
-  const weather = await res.json();
-  const data = { page, navData, weather };
+
+  const data = { page, navData };
   return {
     props: {
       preview,

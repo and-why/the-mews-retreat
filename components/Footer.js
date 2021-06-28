@@ -2,21 +2,44 @@ import { Flex, List, Box, Heading, Icon, Link, Text, Button } from '@chakra-ui/r
 import NavLink from './NavLink';
 import { FaInstagram } from 'react-icons/fa';
 import Image from 'next/image';
+import useSWR from 'swr';
 
-export default function Footer({ navItems, weather }) {
+export default function Footer({ navItems }) {
   // console.log(navItems);
-  const icon = `http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
+  const { data, error } = useSWR(`/api/weather`);
+
+  if (!data) {
+    console.log('no data');
+  }
+  if (error) {
+    console.log(error.message);
+  }
+
+  const weather = data;
+  // console.log(weather);
+
+  // const icon = weather.weather.icon;
   return (
     <>
       <Flex background='gray.300' align='center' justify='center' p={8} direction='column'>
-        <Flex mb={16} maxW='1000px' w='100%' justify='space-between'>
+        <Flex
+          mb={8}
+          maxW='1000px'
+          w='100%'
+          justify='space-between'
+          align={['flex-start', null, 'center']}
+        >
           <Flex direction={['column', 'column', 'row', 'row']} w='45%' justify='space-between'>
             <Flex direction='column' p={4} justify='flex-start'>
               <Heading fontSize='2xl' mb={4}>
                 Current Weather
               </Heading>
               <Flex>
-                <Image src={icon} width='50px' height='50px'></Image>
+                <Image
+                  src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+                  width='50px'
+                  height='50px'
+                ></Image>
                 <Text fontSize='30px' ml={2}>
                   {Math.round(weather.main.temp * 10) / 10}°C
                 </Text>

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import NextImage from 'next/image';
 
 import { Flex, Heading, Box, Text } from '@chakra-ui/react';
 import Header from './Header';
@@ -14,6 +14,7 @@ const MotionBox = motion(Box);
 export default function Layout({ data, children }) {
   // console.log('data', data);
   const imageProps = urlForNextImage(data?.page.image);
+  console.log(imageProps);
   const { src, blurDataURL } = imageProps;
   return (
     <>
@@ -22,9 +23,10 @@ export default function Layout({ data, children }) {
         <Box h={['80vh', '80vh', '100vh']}>
           {data.page.image && (
             <Box h={['80vh', '80vh', '100vh']}>
-              <Image
+              <NextImage
                 blurDataURL={blurDataURL}
                 src={src}
+                priority='true'
                 quality='100'
                 alt={data.page.title}
                 layout='fill'
@@ -41,7 +43,7 @@ export default function Layout({ data, children }) {
             width='100%'
             justify='space-between'
             direction='column'
-            background='rgba(0,0,0,.15)'
+            background='rgba(0,0,0,.25)'
           >
             <NavMenu navItems={data.navData.items} />
             <MotionBox
@@ -100,7 +102,7 @@ export default function Layout({ data, children }) {
           </Flex>
           <Box>
             <FadeUpWhenVisible>
-              <Footer navItems={data.navData.items} weather={data.weather} />
+              <Footer navItems={data.navData.items} />
             </FadeUpWhenVisible>
           </Box>
         </Box>

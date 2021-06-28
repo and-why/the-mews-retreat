@@ -7,7 +7,7 @@ import LargetextWithImages from './Blocks/LargeTextWithImages';
 import { urlFor, urlForNextImage } from '../lib/sanity';
 import FullWidthImage from './Blocks/FullWidthImage';
 import FadeUpWhenVisible from './FadeUpWhenVisible';
-import CarouselSideImageLeft from './Blocks/CarouselSideImageLeft';
+import CarouselSideImage from './Blocks/CarouselSideImage';
 
 export default function PageBody({ content }) {
   return (
@@ -22,7 +22,7 @@ export default function PageBody({ content }) {
             <FadeUpWhenVisible key={item._key}>
               <Flex align='center' justify='center' height='130px'>
                 <Box h='130px' w={imageProps.width}>
-                  <NextImage my={8} {...imageProps} layout='responsive' />
+                  <NextImage my={8} {...imageProps} priority={['false', 'false', 'true']} />
                 </Box>
               </Flex>
             </FadeUpWhenVisible>
@@ -35,8 +35,8 @@ export default function PageBody({ content }) {
           return <LargeText key={item._key} item={item} />;
         } else if (item._type == 'fullWidthImage') {
           return <FullWidthImage key={item._key} item={item} />;
-        } else if (item._type == 'carouselSideImageLeft') {
-          return <CarouselSideImageLeft key={item._key} item={item} />;
+        } else if (item._type == 'carouselSideImage') {
+          return <CarouselSideImage key={item._key} item={item} />;
         }
       })}
     </Flex>

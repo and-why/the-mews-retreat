@@ -32,7 +32,7 @@ export default function LargetextWithImages({ item }) {
               layout='responsive'
               opacity='0.95'
               position='relative'
-              zIndex='99'
+              zindex='2'
             />
           </Parallax>
         </FadeUpWhenVisible>
@@ -51,7 +51,7 @@ export default function LargetextWithImages({ item }) {
               layout='responsive'
               opacity='0.95'
               position='relative'
-              zIndex='1'
+              zindex='2'
             />
           </Parallax>
         </FadeUpWhenVisible>

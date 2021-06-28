@@ -41,7 +41,7 @@ export default {
         { type: 'largeTextWithImages' },
         { type: 'sideContent' },
         { type: 'largeText' },
-        { type: 'carouselSideImageLeft' },
+        { type: 'carouselSideImage' },
       ],
     },
     // {

@@ -10,6 +10,7 @@ const MotionBox = motion(Box);
 
 export default function Home({ data }) {
   // console.log('homepage data', data);
+
   return (
     <MotionBox exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
       <Layout data={data}>{data.page.items && <PageBody content={data.page.items} />}</Layout>
@@ -34,10 +35,7 @@ export async function getStaticProps(context) {
   const page = await getClient().fetch(homepageQuery);
   const navData = await getClient().fetch(mainNavigationQuery);
 
-  const res = await fetch(getWeather());
-  const weather = await res.json();
-
-  const data = { page, navData, weather };
+  const data = { page, navData };
 
   return {
     props: {

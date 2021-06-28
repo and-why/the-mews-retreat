@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { urlForNextImage } from '../../lib/sanity';
 import CarouselItem from './CarouselItem';
 
-export default function CarouselSideImageLeft({ item }) {
+export default function CarouselSideImage({ item }) {
   // console.log('Carousel', item);
   const totalItems = item.items.length;
   const [current, setCurrent] = useState(1);

@@ -73,7 +73,7 @@ export default function NavMenu({ navItems }) {
         translateY='-50%'
         right='10px'
         textAlign='center'
-        zIndex='1'
+        zIndex='10'
       >
         <Text transform='rotate(-90deg)' mt='35px'>
           MENU
@@ -89,7 +89,7 @@ export default function NavMenu({ navItems }) {
         right='10px'
         color='gray.600'
         fontSize='xl'
-        zIndex='1'
+        zIndex='10'
         h='50px'
         w='50px'
         p={4}
