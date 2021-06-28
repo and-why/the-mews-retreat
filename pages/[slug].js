@@ -10,7 +10,6 @@ import { getClient } from '../lib/sanity.server';
 
 import { motion } from 'framer-motion';
 import { Box } from '@chakra-ui/react';
-import { getWeather } from '../lib/weather';
 
 const MotionBox = motion(Box);
 

@@ -9,16 +9,13 @@ export default function Footer({ navItems }) {
   const { data, error } = useSWR(`/api/weather`);
 
   if (!data) {
-    console.log('no data');
+    return <Box>Loading footer</Box>;
   }
   if (error) {
     console.log(error.message);
   }
-
   const weather = data;
-  // console.log(weather);
 
-  // const icon = weather.weather.icon;
   return (
     <>
       <Flex background='gray.300' align='center' justify='center' p={8} direction='column'>
