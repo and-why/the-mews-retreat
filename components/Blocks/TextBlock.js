@@ -9,6 +9,7 @@ export default function TextBlock({ item }) {
       maxWidth='650px'
       minWidth='300px'
       textAlign='center'
+      fontSize='22px'
       p={[2, 2, 4]}
       mb={[2, 4, 8, null]}
       color='gray.800'

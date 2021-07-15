@@ -71,13 +71,13 @@ export default function CarouselItem({ item, index, setCurrent, current, totalIt
               0{index + 1}
             </Text>
             <Box minH='250px'>
-              <Heading color='gray.500' fontSize='xs' pb={4} textTransform='uppercase'>
+              <Heading color='gray.500' fontSize='md' pb={4} textTransform='uppercase'>
                 {item.subheading}
               </Heading>
               <Heading fontSize='4xl' pb={4}>
                 {item.heading}
               </Heading>
-              <Text fontSize='md'>{item.description}</Text>
+              <Text fontSize='22px'>{item.description}</Text>
             </Box>
             <Flex
               display={totalItems == 1 && 'none'}
