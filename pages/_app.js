@@ -11,6 +11,14 @@ const GlobalStyle = ({ children }) => {
     <div>
       <Head>
         <meta content='width=device-width, initial-scale=1' name='viewport' />
+        {/* <!-- Start of z3n-ranie Zendesk Widget script --> */}
+        <script
+          id='ze-snippet'
+          src='https://static.zdassets.com/ekr/snippet.js?key=003e06c5-a0b1-45ea-bca6-6ba27328790a'
+        >
+          {' '}
+        </script>
+        {/* <!-- End of z3n-ranie Zendesk Widget script --> */}
       </Head>
       <CSSReset />
       <Global
