@@ -14,7 +14,7 @@ const GlobalStyle = ({ children }) => {
         {/* <!-- Start of z3n-ranie Zendesk Widget script --> */}
         <script
           id='ze-snippet'
-          src='https://static.zdassets.com/ekr/snippet.js?key=003e06c5-a0b1-45ea-bca6-6ba27328790a'
+          src={`https://static.zdassets.com/ekr/snippet.js?key=${process.env.NEXT_PUBLIC_ZENDESK_KEY}`}
         >
           {' '}
         </script>
