@@ -15,6 +15,7 @@ const GlobalStyle = ({ children }) => {
         <script
           id='ze-snippet'
           src={`https://static.zdassets.com/ekr/snippet.js?key=${process.env.NEXT_PUBLIC_ZENDESK_KEY}`}
+          async
         >
           {' '}
         </script>
