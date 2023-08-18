@@ -11,15 +11,12 @@ const GlobalStyle = ({ children }) => {
     <div>
       <Head>
         <meta content='width=device-width, initial-scale=1' name='viewport' />
-        {/* <!-- Start of z3n-ranie Zendesk Widget script --> */}
         <script
-          id='ze-snippet'
-          src={`https://static.zdassets.com/ekr/snippet.js?key=${process.env.NEXT_PUBLIC_ZENDESK_KEY}`}
-          async
-        >
-          {' '}
-        </script>
-        {/* <!-- End of z3n-ranie Zendesk Widget script --> */}
+          data-jsd-embedded
+          data-key={process.env.NEXT_PUBLIC_ATLASSIAN_KEY}
+          data-base-url='https://jsd-widget.atlassian.com'
+          src='https://jsd-widget.atlassian.com/assets/embed.js'
+        ></script>
       </Head>
       <CSSReset />
       <Global
